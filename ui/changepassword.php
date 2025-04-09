@@ -2,7 +2,16 @@
 include_once "connectdb.php";
 session_start();
 
-include_once "header.php";
+if($_SESSION['useremail'] == "") {
+  header("Location:../index.php");
+}
+
+if($_SESSION['role'] == "Admin") {
+  include_once "header.php";
+} else {
+  include_once "headeruser.php";
+}
+
 
 if(isset($_POST['btnupdate'])) 
 {

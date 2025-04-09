@@ -1,13 +1,24 @@
+
+
 <?php
-  include_once "connectdb.php";
-  session_start();
 
-  if($_SESSION['useremail'] == "") {
-    header("Location:../index.php");
-  }
+include_once 'connectdb.php';
+session_start();
 
-  include_once "headeruser.php";
+
+if($_SESSION['useremail']==""  OR $_SESSION['role']=="Admin"){
+
+header('location:../index.php');
+
+}
+
+include_once "headeruser.php";
+
+
 ?>
+
+
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -59,3 +70,11 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<?php
+
+include_once "footer.php";
+
+
+?>
