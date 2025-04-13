@@ -7,17 +7,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin ROTIAMIH | Starter</title>
+  <title>POS | BARCODE SYSTEMS</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+
+
+ <!-- iCheck for checkboxes and radio inputs -->
+ <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+<!-- Select2 -->
+<link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+
   
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
+ <!-- SweetAlert2 -->
+ <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -166,7 +184,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">POS ROTIAMIH</span>
+      <span class="brand-text font-weight-light">POS BARCODE</span>
     </a>
 
     <!-- Sidebar -->
@@ -198,7 +216,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
+      
+          <li class="nav-item">
             <a href="dashboard.php" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -331,7 +350,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-
 
         </ul>
       </nav>
