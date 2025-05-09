@@ -76,7 +76,7 @@ if (isset($_POST['btnsave'])) {
 
                     $pid = $pdo->lastInsertId(); // which was the 5
 
-                    date_default_timezone_set("Asia/Calcutta");
+                    date_default_timezone_set("Asia/Jakarta");
                     $newbarcode = $pid . date('his');
 
                     $update = $pdo->prepare("update tbl_product SET barcode='$newbarcode' where pid='" . $pid . "'");
