@@ -1,19 +1,18 @@
 <?php
 include_once 'connectdb.php';
 session_start();
-if($_SESSION['useremail']==""  OR $_SESSION['role']=="User"){
+if ($_SESSION['useremail'] == ""  or $_SESSION['role'] == "User") {
 
   header('location:../index.php');
-  
-  }
+}
 
 
-  if($_SESSION['role']=="Admin"){
-    include_once'header.php';
-  }else{
-  
-    include_once'headeruser.php';
-  }
+if ($_SESSION['role'] == "Admin") {
+  include_once 'header.php';
+} else {
+
+  include_once 'headeruser.php';
+}
 
 
 ?>
@@ -104,7 +103,7 @@ if($_SESSION['useremail']==""  OR $_SESSION['role']=="User"){
 
 <a href="editproduct.php?id=' . $row->pid . '" class="btn btn-success btn-xs" role="button"><span class="fa fa-edit" style="color:#ffffff" data-toggle="tooltip" title="Edit Product"></span></a>
 
-<button id=' . $row->pid . '  class="btn btn-danger btn-xs btndelete"><span class="fa fa-trash" style="color:#ffffff" data-toggle="tooltip" title="Delete Product"></span></button>
+<button  id="' . $row->pid . '"name="' . $row->product . '" class="btn btn-danger btn-xs btndelete"><span class="fa fa-trash" style="color:#ffffff" data-toggle="tooltip" title="Delete Product"></span></button>
 
 
 </div>
@@ -166,62 +165,61 @@ include_once "footer.php";
 <script>
   $(document).ready(function() {
     $('.btndelete').click(function() {
-            var tdh = $(this);
-            var id = $(this).attr("id");
+      var tdh = $(this);
+      var id = $(this).attr("id");
+      var productName = $(this).attr("name");
 
 
-            Swal.fire({
-  title: 'Do you want to delete?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-
-
-
-    $.ajax({
-                            url: 'productdelete.php',
-                            type: 'post',
-                            data: {
-                            pidd: id
-                            },
-                            success: function(data) {
-                            tdh.parents('tr').hide();
-                            }
-
-
-                        });
+      Swal.fire({
+        title: 'Do you want to delete?'+ ' : ' + productName, 
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
 
 
 
+          $.ajax({
+            url: 'productdelete.php',
+            type: 'post',
+            data: {
+              pidd: id
+            },
+            success: function(data) {
+              tdh.parents('tr').hide();
+            }
 
 
-
-
-    Swal.fire(
-      'Deleted!',
-      'Your Product has been deleted.',
-      'success'
-    )
-  }
-})
-
-
-
-
-
-
-
-
-           
-                      });
-            
           });
-     
 
+
+
+
+
+
+
+          Swal.fire(
+            'Deleted!',
+            'Your Product has been deleted.',
+            'success'
+          )
+        }
+      })
+
+
+
+
+
+
+
+
+
+    });
+
+  });
 </script>
-      </script>
+</script>
