@@ -1,0 +1,14 @@
+/*custom*/
+.login-box2,
+.register-box {
+  width: 260px;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    margin-top: .5rem;
+    width: 90%;
+  }
+
+  .card {
+    margin-bottom: 0;
+  }
+}

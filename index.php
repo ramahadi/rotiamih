@@ -27,6 +27,7 @@ if (isset($_POST['btn_login'])) {
       $_SESSION['username'] = $row['username'];
       $_SESSION['useremail'] = $row['useremail'];
       $_SESSION['role'] = $row['role'];
+      $_SESSION['imageUser'] = $row['imageUser'];
 
     }else if ($row['useremail'] == $useremail and $row['userpassword'] == $password and $row['role'] == "User") 
     {
@@ -39,6 +40,7 @@ if (isset($_POST['btn_login'])) {
       $_SESSION['username'] = $row['username'];
       $_SESSION['useremail'] = $row['useremail'];
       $_SESSION['role'] = $row['role'];
+      $_SESSION['imageUser'] = $row['imageUser'];
     }
   } else {
         // echo $success = "Login failed";
@@ -73,14 +75,22 @@ if (isset($_POST['btn_login'])) {
 
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="dist/css/custom.css">
 </head>
 
 <body class="hold-transition login-page">
+  <div class="login-box2">
+    <a href="index.php" class="nav-item">
+        <img src="dist/img/rotiamih-login.png" alt="Roti Amih Logo" class="product-image img-circle elevation-3" style="opacity: 0.8">
+    </a>
+    <p></p>
+  </div>
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="../../index2.html" class="h1"><b>POS</b>ROTI AMIH</a>
+        <a href="../../index2.html" class="h4"><b>ROTI AMIH</b> BUSINESS SYSTEM</a>
       </div>
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
