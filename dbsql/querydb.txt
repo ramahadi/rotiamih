@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2025 at 12:38 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 06 Jan 2026 pada 15.31
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category`
+-- Struktur dari tabel `tbl_category`
 --
 
 CREATE TABLE `tbl_category` (
@@ -33,7 +33,7 @@ CREATE TABLE `tbl_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_category`
+-- Dumping data untuk tabel `tbl_category`
 --
 
 INSERT INTO `tbl_category` (`catid`, `category`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `tbl_category` (`catid`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_invoice`
+-- Struktur dari tabel `tbl_invoice`
 --
 
 CREATE TABLE `tbl_invoice` (
@@ -78,7 +78,7 @@ CREATE TABLE `tbl_invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_invoice`
+-- Dumping data untuk tabel `tbl_invoice`
 --
 
 INSERT INTO `tbl_invoice` (`invoice_id`, `order_date`, `subtotal`, `discount`, `sgst`, `cgst`, `total`, `payment_type`, `due`, `paid`) VALUES
@@ -120,7 +120,7 @@ INSERT INTO `tbl_invoice` (`invoice_id`, `order_date`, `subtotal`, `discount`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_invoice_details`
+-- Struktur dari tabel `tbl_invoice_details`
 --
 
 CREATE TABLE `tbl_invoice_details` (
@@ -136,7 +136,7 @@ CREATE TABLE `tbl_invoice_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_invoice_details`
+-- Dumping data untuk tabel `tbl_invoice_details`
 --
 
 INSERT INTO `tbl_invoice_details` (`id`, `invoice_id`, `barcode`, `product_id`, `product_name`, `qty`, `rate`, `saleprice`, `order_date`) VALUES
@@ -228,7 +228,7 @@ INSERT INTO `tbl_invoice_details` (`id`, `invoice_id`, `barcode`, `product_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product`
+-- Struktur dari tabel `tbl_product`
 --
 
 CREATE TABLE `tbl_product` (
@@ -244,7 +244,7 @@ CREATE TABLE `tbl_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_product`
+-- Dumping data untuk tabel `tbl_product`
 --
 
 INSERT INTO `tbl_product` (`pid`, `barcode`, `product`, `category`, `description`, `stock`, `purchaseprice`, `saleprice`, `image`) VALUES
@@ -265,7 +265,7 @@ INSERT INTO `tbl_product` (`pid`, `barcode`, `product`, `category`, `description
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_taxdis`
+-- Struktur dari tabel `tbl_taxdis`
 --
 
 CREATE TABLE `tbl_taxdis` (
@@ -276,17 +276,17 @@ CREATE TABLE `tbl_taxdis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_taxdis`
+-- Dumping data untuk tabel `tbl_taxdis`
 --
 
 INSERT INTO `tbl_taxdis` (`taxdis_id`, `sgst`, `cgst`, `discount`) VALUES
-(1, 2.5, 2.5, 2),
+(1, 2.5, 2.5, 2.7),
 (2, 5, 5, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -294,94 +294,95 @@ CREATE TABLE `tbl_user` (
   `username` varchar(200) NOT NULL,
   `useremail` varchar(200) NOT NULL,
   `userpassword` varchar(200) NOT NULL,
-  `role` varchar(50) NOT NULL
+  `role` varchar(50) NOT NULL,
+  `imageUser` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`userid`, `username`, `useremail`, `userpassword`, `role`) VALUES
-(1, 'admin', 'admin@gmail.com', '12345', 'Admin'),
-(2, 'user', 'user@gmail.com', '12345', 'User'),
-(14, 'test', 'test@gmail.com', '123', 'User');
+INSERT INTO `tbl_user` (`userid`, `username`, `useremail`, `userpassword`, `role`, `imageUser`) VALUES
+(1, 'admin', 'admin@gmail.com', '12345', 'Admin', 'admin.jpg'),
+(2, 'user', 'user@gmail.com', '12345', 'User', ''),
+(14, 'test', 'test@gmail.com', '123', 'User', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_category`
+-- Indeks untuk tabel `tbl_category`
 --
 ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`catid`);
 
 --
--- Indexes for table `tbl_invoice`
+-- Indeks untuk tabel `tbl_invoice`
 --
 ALTER TABLE `tbl_invoice`
   ADD PRIMARY KEY (`invoice_id`);
 
 --
--- Indexes for table `tbl_invoice_details`
+-- Indeks untuk tabel `tbl_invoice_details`
 --
 ALTER TABLE `tbl_invoice_details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_product`
+-- Indeks untuk tabel `tbl_product`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`pid`);
 
 --
--- Indexes for table `tbl_taxdis`
+-- Indeks untuk tabel `tbl_taxdis`
 --
 ALTER TABLE `tbl_taxdis`
   ADD PRIMARY KEY (`taxdis_id`);
 
 --
--- Indexes for table `tbl_user`
+-- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`userid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_category`
+-- AUTO_INCREMENT untuk tabel `tbl_category`
 --
 ALTER TABLE `tbl_category`
   MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `tbl_invoice`
+-- AUTO_INCREMENT untuk tabel `tbl_invoice`
 --
 ALTER TABLE `tbl_invoice`
   MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT for table `tbl_invoice_details`
+-- AUTO_INCREMENT untuk tabel `tbl_invoice_details`
 --
 ALTER TABLE `tbl_invoice_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
--- AUTO_INCREMENT for table `tbl_product`
+-- AUTO_INCREMENT untuk tabel `tbl_product`
 --
 ALTER TABLE `tbl_product`
   MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `tbl_taxdis`
+-- AUTO_INCREMENT untuk tabel `tbl_taxdis`
 --
 ALTER TABLE `tbl_taxdis`
   MODIFY `taxdis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
