@@ -176,7 +176,7 @@ include_once "footer.php";
 
 
     $.ajax({
-                            url: 'ordertdelete.php',
+                            url: 'orderdelete.php',
                             type: 'post',
                             data:{pidd:id},
                             success: function(data) {

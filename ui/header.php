@@ -260,9 +260,55 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                POS
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="orderlist.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Setoran Tunai
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="setoran.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Setoran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="orderlist.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Setoran List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- <li class="nav-item">
             <a href="pos.php" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
@@ -279,7 +325,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
               </p>
             </a>
-          </li>
+          </li> -->
 
           
 
