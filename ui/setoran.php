@@ -28,7 +28,7 @@ if (isset($_POST['btnsave'])) {
         $_SESSION['status_code'] = "warning";
     } else {
 
-        $insert = $pdo->prepare("insert into tbl_category (category) values(:cat)");
+        $insert = $pdo->prepare("insert into tbl_setoran (category) values(:cat)");
 
         $insert->bindParam(':cat', $category);
 
@@ -47,7 +47,7 @@ if (isset($_POST['btnsave'])) {
 if (isset($_POST['btnupdate'])) {
 
     $category = $_POST['txtcategory'];
-    $id = $_POST['txtcatid'];
+    $id = $_POST['txtsetoran_id'];
 
     if (empty($category)) {
 
@@ -55,7 +55,7 @@ if (isset($_POST['btnupdate'])) {
         $_SESSION['status_code'] = "warning";
     } else {
 
-        $update = $pdo->prepare("update tbl_category set category=:cat where catid=" . $id);
+        $update = $pdo->prepare("update tbl_setoran set category=:cat where setoran_id=" . $id);
 
         $update->bindParam(':cat', $category);
 
@@ -73,7 +73,7 @@ if (isset($_POST['btnupdate'])) {
 
 if (isset($_POST['btndelete'])) {
 
-    $delete = $pdo->prepare("delete from tbl_category where catid=" . $_POST['btndelete']);
+    $delete = $pdo->prepare("delete from tbl_setoran where setoran_id=" . $_POST['btndelete']);
 
     if ($delete->execute()) {
         $_SESSION['status'] = "Deleted";
@@ -130,7 +130,7 @@ if (isset($_POST['btndelete'])) {
 
                             if (isset($_POST['btnedit'])) {
 
-                                $select = $pdo->prepare("select * from tbl_category where catid =" . $_POST['btnedit']);
+                                $select = $pdo->prepare("select * from tbl_setoran where setoran_id =" . $_POST['btnedit']);
 
                                 $select->execute();
 
@@ -144,7 +144,7 @@ if (isset($_POST['btndelete'])) {
                     <div class="form-group">
                       <label for="exampleInputEmail1">Category</label>
 
-                      <input type="hidden" class="form-control" placeholder="Enter Category"  value="' . $row->catid . '" name="txtcatid" >
+                      <input type="hidden" class="form-control" placeholder="Enter Category"  value="' . $row->setoran_id . '" name="txtsetoran_id" >
 
                       <input type="text" class="form-control" placeholder="Enter Category"  value="' . $row->category . '" name="txtcategory" >
 
@@ -167,11 +167,12 @@ if (isset($_POST['btndelete'])) {
                                 echo '<div class="col-md-4">
 
 
-               
+                    <!--
                     <div class="form-group">
                       <label for="exampleInputEmail1">Category</label>
                       <input type="text" class="form-control" placeholder="Enter Category"  name="txtcategory" >
                     </div>
+                    -->
 
                     <!-- Date and time -->
                     <div class="form-group">
@@ -184,6 +185,45 @@ if (isset($_POST['btndelete'])) {
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label>Total Moka</label>
+                        <input type="number" min="1" step="any" class="form-control" placeholder="Total Uang Cash Aplikasi Moka" name="dTotMoka" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Laci</label>
+                        <input type="number" min="1" step="any" class="form-control" placeholder="Total Uang Cash Laci" name="dTotLaci" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Belanja</label>
+                        <input type="number" min="1" step="any" class="form-control" placeholder="Total Belanja Harian" name="dTotBelanja" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Ongkir Driver</label>
+                        <input type="number" min="1" step="any" class="form-control" placeholder="Total Ongkir Driver" name="dTotOngkir" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Catatan Input</label>
+                        <textarea class="form-control" placeholder="Catatan Input" name="txtNotes1" required></textarea>
+                    </div>
+
+                    <div class="icheck-success d-inline">
+                        <input type="radio" name="rb" value="Cash" checked id="radioSuccess1">
+                        <label for="radioSuccess1">
+                            Approved
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Catatan Approve</label>
+                        <textarea class="form-control" placeholder="Catatan Approve" name="txtNotes2" required></textarea>
+                    </div>
 
                     <div class="card-footer">
                     <button type="submit" class="btn btn-warning" name="btnsave">Save</button>
@@ -201,13 +241,16 @@ if (isset($_POST['btndelete'])) {
 
                             <div class="col-md-8">
 
-                                <table id="table_category" class="table table-striped table-hover ">
+                                <table id="table_setoran" class="table table-striped table-hover ">
                                     <thead>
                                         <tr>
                                             <td>#</td>
-                                            <td>Category</td>
-                                            <td>Edit</td>
-                                            <td>Delete</td>
+                                            <td>Tanggal</td>
+                                            <td>Moka</td>
+                                            <td>Laci</td>
+                                            <td>Action</td>
+                                            <!--<td>Edit</td>
+                                            <td>Delete</td> -->
 
                                         </tr>
 
@@ -218,27 +261,38 @@ if (isset($_POST['btndelete'])) {
 
                                         <?php
 
-                                        $select = $pdo->prepare("select * from tbl_category order by catid ASC");
+                                        $select = $pdo->prepare("select * from tbl_setoran order by setoran_id DESC Limit 30");
                                         $select->execute();
 
                                         while ($row = $select->fetch(PDO::FETCH_OBJ)) {
 
                                             echo '
 <tr>
-<td>' . $row->catid . '</td>
-<td>' . $row->category . '</td>
+<td>' . $row->setoran_id . '</td>
+<td>' . date('d-M-Y', strtotime($row->setoran_date))  . '</td>
+<td>' . number_format($row->total_moka, 0, ',', '.') . '</td>
+<td>' . number_format($row->total_laci, 0, ',', '.') . '</td>
 
 <td>
+    <div class="btn-group">
+    <button type="submit" value="' . $row->setoran_id . '" class="btn btn-primary  btnEditNew" name="btnedit"><span class="fa fa-edit" style="color:#ffffff" data-toggle="tooltip" title="Edit Setoran"></span></button>
+    <button type="submit" value="' . $row->setoran_id . '" class="btn btn-danger  btndeleteNew"><span class="fa fa-trash" style="color:#ffffff" data-toggle="tooltip" title="Hapus Setoran"></span></button>
+    </div>
+</td>
 
-<button type="submit" class="btn btn-primary" value="' . $row->catid . '" name="btnedit">Edit</button>
+<!--
+<td>
+
+<button type="submit" class="btn btn-primary" value="' . $row->setoran_id . '" name="btnedit">Edit</button>
 
 </td>
 
 <td>
 
-<button type="submit" class="btn btn-danger" value="' . $row->catid . '" name="btndelete">Delete</button>
+<button type="submit" class="btn btn-danger" value="' . $row->setoran_id . '" name="btndelete">Delete</button>
 
 </td>
+-->
 
 </tr>';
                                         }
@@ -251,9 +305,13 @@ if (isset($_POST['btndelete'])) {
                                     <tfoot>
                                         <tr>
                                             <td>#</td>
-                                            <td>Category</td>
-                                            <td>Edit</td>
+                                            <td>Tanggal</td>
+                                            <td>Moka</td>
+                                            <td>Laci</td>
+                                            <td>Action</td>
+                                            <!-- <td>Edit</td>
                                             <td>Delete</td>
+                                            -->
 
                                         </tr>
 
@@ -320,7 +378,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
 
 <script>
     $(document).ready(function() {
-        $('#table_category').DataTable();
+        $('#table_setoran').DataTable();
 
         
     });
