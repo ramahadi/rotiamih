@@ -173,16 +173,11 @@ if (isset($_POST['btndelete'])) {
                       <input type="text" class="form-control" placeholder="Enter Category"  name="txtcategory" >
                     </div>
 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Tanggal Setor</label>
-                      <input type="text" class="form-control" placeholder="Enter Category"  name="txtcategory" >
-                    </div>
-
                     <!-- Date and time -->
                     <div class="form-group">
-                    <label>Date and time:</label>
+                    <label>Tanggal Setor:</label>
                         <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime"/>
+                            <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime" placeholder="mm/dd/yyyy"/>
                             <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
